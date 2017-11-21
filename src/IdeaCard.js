@@ -31,9 +31,9 @@ export default class IdeaCard extends Component {
         return {quality: prevState.quality - 1}
       }
       return null;
+    }, () => {
+      this.updateIdea();
     });
-
-    this.updateIdea();
   }
 
   deleteIdea(id) {
