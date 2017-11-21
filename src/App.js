@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      title: '',
+      body: '',
+      ideas: [],
+    };
+  }
+
+  updateIdeaInfo(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <label htmlFor="title">Title</label>
+        <input
+          onChange={e => this.updateIdeaInfo(e)}
+          name="title"
+          id="title"
+          type="text"
+        />
+        <label htmlFor="body" />
+        <input
+          onChange={e => this.updateIdeaInfo(e)}
+          name="body"
+          id="body"
+          type="text"
+        />
+        <button>Add Idea</button>
       </div>
     );
   }
