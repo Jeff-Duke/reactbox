@@ -18,22 +18,25 @@ export default class IdeaCard extends Component {
       title,
       body,
       quality,
-      id
+      id,
     });
   }
 
   updateQuality(type) {
-    this.setState(prevState => {
-      if (type === 'upvote' && prevState.quality < 3) {
-        return {quality: prevState.quality + 1}
+    this.setState(
+      prevState => {
+        if (type === 'upvote' && prevState.quality < 3) {
+          return { quality: prevState.quality + 1 };
+        }
+        if (type === 'downvote' && prevState.quality > 1) {
+          return { quality: prevState.quality - 1 };
+        }
+        return null;
+      },
+      () => {
+        this.updateIdea();
       }
-      if (type === 'downvote' && prevState.quality > 1) {
-        return {quality: prevState.quality - 1}
-      }
-      return null;
-    }, () => {
-      this.updateIdea();
-    });
+    );
   }
 
   deleteIdea(id) {
@@ -53,42 +56,57 @@ export default class IdeaCard extends Component {
       body,
       quality,
       id,
-    }
+    };
     this.props.updateIdea(idea);
   }
 
   render() {
     const { id, title, body, quality, editing } = this.state;
     const ideaQuality =
-      quality === 1
-        ? 'swill'
-        : quality === 2 ? 'plausible' : 'genius';
+      quality === 1 ? 'swill' : quality === 2 ? 'plausible' : 'genius';
 
     return (
       <div key={id}>
-        {editing ? (
+        {editing && editing === 'title' ? (
           <input
-            type="text"
             name="title"
             value={title}
-            onChange={e => {
-              this.updateInfo(e);
-            }}
+            onChange={e => this.updateInfo(e)}
             onBlur={() => {
-              this.setState({editing: false});
+              this.setState({ editing: false });
               this.updateIdea();
             }}
+            type="text"
           />
         ) : (
           <h1 onClick={() => this.setState({ editing: 'title' })}>{title}</h1>
         )}
-        <h2>{body}</h2>
+        {editing && editing === 'body' ? (
+          <input
+            name="body"
+            value={body}
+            onChange={e => this.updateInfo(e)}
+            onBlur={() => {
+              this.setState({ editing: false });
+              this.updateIdea();
+            }}
+            type="text"
+          />
+        ) : (
+          <h2 onClick = {() => this.setState({ editing: 'body' }) } >{body}</h2>
+        )}
         <p>quality: {ideaQuality}</p>
         <button onClick={() => this.deleteIdea(id)}>Delete</button>
-        <button disabled={quality === 3} onClick={() => this.updateQuality('upvote')}>
+        <button
+          disabled={quality === 3}
+          onClick={() => this.updateQuality('upvote')}
+        >
           +
         </button>
-        <button disabled={quality === 1} onClick={() => this.updateQuality('downvote')}>
+        <button
+          disabled={quality === 1}
+          onClick={() => this.updateQuality('downvote')}
+        >
           -
         </button>
       </div>
