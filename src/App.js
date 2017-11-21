@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import IdeaCard from './IdeaCard';
 
 class App extends Component {
   constructor() {
@@ -41,18 +42,16 @@ class App extends Component {
       return idea.id !== ideaId;
     });
     this.setState({ ideas });
-  }
-
-  upvote(ideaId) {
-    let { ideas } = this.state;
-    ideas.find(idea => idea.id === ideaId && idea.quality ++ );
-    this.setState({ ideas });
     this.storeIdeas();
   }
 
-  downvote(ideaId) {
+  updateIdeas(ideaToUpdate) {
     let { ideas } = this.state;
-    ideas.find(idea => idea.id === ideaId && idea.quality -- );
+    ideas.forEach(idea => {
+      if(idea.id === ideaToUpdate.id) {
+        idea = ideaToUpdate;
+      }
+    });
     this.setState({ ideas });
     this.storeIdeas();
   }
@@ -86,19 +85,11 @@ class App extends Component {
         <section>
           {ideas.map(idea => {
             return (
-              <div key={idea.id}>
-                <h1>{idea.title}</h1>
-                <h2>{idea.body}</h2>
-                <p>
-                  quality:{' '}
-                  {idea.quality === 1
-                    ? 'swill'
-                    : idea.quality === 2 ? 'plausible' : 'genius'}
-                </p>
-                <button onClick={() => this.deleteIdea(idea.id)}>Delete</button>
-                <button onClick={() => this.upvote(idea.id)}>+</button>
-                <button onClick={() => this.downvote(idea.id)}>-</button>
-              </div>
+              <IdeaCard
+                key={idea.id}
+                deleteIdea={(ideaId) => this.deleteIdea(ideaId)}
+                idea={idea}
+                updateIdea={(idea) => this.updateIdeas(idea)}/>
             );
           })}
         </section>
