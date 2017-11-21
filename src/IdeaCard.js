@@ -74,7 +74,10 @@ export default class IdeaCard extends Component {
             onChange={e => {
               this.updateInfo(e);
             }}
-            onBlur={() => this.setState({ editing: null })}
+            onBlur={() => {
+              this.setState({editing: false});
+              this.updateIdea();
+            }}
           />
         ) : (
           <h1 onClick={() => this.setState({ editing: 'title' })}>{title}</h1>
