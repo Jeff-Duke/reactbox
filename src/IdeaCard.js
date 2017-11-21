@@ -93,7 +93,7 @@ export default class IdeaCard extends Component {
             type="text"
           />
         ) : (
-          <h2 onClick = {() => this.setState({ editing: 'body' }) } >{body}</h2>
+          <h2 onClick={() => this.setState({ editing: 'body' })}>{body}</h2>
         )}
         <p>quality: {ideaQuality}</p>
         <button onClick={() => this.deleteIdea(id)}>Delete</button>
