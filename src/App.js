@@ -7,7 +7,12 @@ class App extends Component {
     this.state = {
       title: '',
       body: '',
-      ideas: [],
+      ideas: [ {
+        id: 1213332123,
+        title: 'hello',
+        body: 'world',
+        quality: 1,
+      } ],
     };
   }
 
@@ -26,7 +31,15 @@ class App extends Component {
     };
 
     ideas.unshift(idea);
-    this.setState({ ideas: ideas });
+    this.setState({ ideas });
+  }
+
+  deleteIdea(ideaId) {
+    let { ideas } = this.state;
+    ideas = ideas.filter(idea => {
+      return idea.id !== ideaId;
+    });
+    this.setState({ ideas });
   }
 
   render() {
@@ -63,6 +76,7 @@ class App extends Component {
                     ? 'swill'
                     : idea.quality === 2 ? 'plausible' : 'genius'}
                 </p>
+                <button onClick={() => this.deleteIdea(idea.id)}>Delete</button>
               </div>
             );
           })}
