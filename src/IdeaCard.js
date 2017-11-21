@@ -12,8 +12,9 @@ export default class IdeaCard extends Component {
   }
 
   componentDidMount() {
-    const { title, body, quality } = this.props.idea;
+    const { title, body, quality, id } = this.props;
     this.setState ({
+      id,
       title,
       body,
       quality
@@ -35,8 +36,8 @@ export default class IdeaCard extends Component {
     }
   }
 
-  deleteIdea() {
-    this.props.deleteIdea(this.props.idea);
+  deleteIdea(id) {
+    this.props.deleteIdea(id);
   }
 
   updateInfo(e) {
@@ -47,7 +48,7 @@ export default class IdeaCard extends Component {
   updateIdea() {
     const { title, body, quality } = this.state;
     const idea = {
-      id: this.props.idea.id,
+      id: this.props.id,
       title,
       body,
       quality,

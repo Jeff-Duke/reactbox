@@ -22,17 +22,17 @@ class App extends Component {
     const updatedIdeas = this.state.ideas;
     updatedIdeas.unshift(newIdea);
     this.setState({ ideas: updatedIdeas });
-    this.storeIdeas();
+    this.storeIdeas(updatedIdeas);
   }
 
-  deleteIdea(ideaToDelete) {
+  deleteIdea(idToDelete) {
     let { ideas } = this.state;
     ideas = ideas.filter(idea => {
-      return idea !== ideaToDelete;
+      return idea.id !== idToDelete;
     });
 
     this.setState({ ideas });
-    this.storeIdeas();
+    this.storeIdeas(ideas);
   }
 
   updateIdeas(ideaToUpdate) {
@@ -43,11 +43,11 @@ class App extends Component {
       }
     });
     this.setState({ ideas });
-    this.storeIdeas();
+    this.storeIdeas(ideas);
   }
 
-  storeIdeas() {
-    localStorage.setItem('ideas', JSON.stringify(this.state.ideas));
+  storeIdeas(ideas) {
+    localStorage.setItem('ideas', JSON.stringify(ideas));
   }
 
   render() {
@@ -64,7 +64,7 @@ class App extends Component {
               <IdeaCard
                 key={idea.id}
                 deleteIdea={(idea) => this.deleteIdea(idea)}
-                idea={idea}
+                { ...idea }
                 updateIdea={(idea) => this.updateIdeas(idea)}/>
             );
           })}
