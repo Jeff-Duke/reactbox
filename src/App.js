@@ -7,13 +7,13 @@ class App extends Component {
     this.state = {
       title: '',
       body: '',
-      ideas: [ {
-        id: 1213332123,
-        title: 'hello',
-        body: 'world',
-        quality: 1,
-      } ],
+      ideas: [],
     };
+  }
+
+  componentDidMount() {
+    const ideas = JSON.parse(localStorage.getItem('ideas')) || [];
+    this.setState ({ ideas });
   }
 
   updateIdeaInfo(e) {
@@ -32,6 +32,7 @@ class App extends Component {
 
     ideas.unshift(idea);
     this.setState({ ideas });
+    this.storeIdeas();
   }
 
   deleteIdea(ideaId) {
@@ -42,9 +43,27 @@ class App extends Component {
     this.setState({ ideas });
   }
 
+  upvote(ideaId) {
+    let { ideas } = this.state;
+    ideas.find(idea => idea.id === ideaId && idea.quality ++ );
+    this.setState({ ideas });
+    this.storeIdeas();
+  }
+
+  downvote(ideaId) {
+    let { ideas } = this.state;
+    ideas.find(idea => idea.id === ideaId && idea.quality -- );
+    this.setState({ ideas });
+    this.storeIdeas();
+  }
+
+  storeIdeas() {
+    localStorage.setItem('ideas', JSON.stringify(this.state.ideas));
+  }
+
   render() {
     const { ideas } = this.state;
-    console.log(ideas);
+
     return (
       <div className="App">
         <section>
@@ -77,6 +96,8 @@ class App extends Component {
                     : idea.quality === 2 ? 'plausible' : 'genius'}
                 </p>
                 <button onClick={() => this.deleteIdea(idea.id)}>Delete</button>
+                <button onClick={() => this.upvote(idea.id)}>+</button>
+                <button onClick={() => this.downvote(idea.id)}>-</button>
               </div>
             );
           })}
