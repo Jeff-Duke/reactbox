@@ -7,8 +7,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      title: '',
-      body: '',
       ideas: [],
     };
   }
@@ -36,14 +34,16 @@ class App extends Component {
   }
 
   updateIdeas(ideaToUpdate) {
-    let { ideas } = this.state;
-    ideas.forEach(idea => {
-      if(idea.id === ideaToUpdate.id) {
-        idea = ideaToUpdate;
+    let ideas = this.state.ideas;
+    let newIdeasArray = ideas.map((idea) => {
+      if (idea.id === ideaToUpdate.id) {
+        return ideaToUpdate;
+      } else {
+        return idea;
       }
     });
-    this.setState({ ideas });
-    this.storeIdeas(ideas);
+    this.setState({ ideas: newIdeasArray });
+    this.storeIdeas(newIdeasArray);
   }
 
   storeIdeas(ideas) {
@@ -63,8 +63,8 @@ class App extends Component {
             return (
               <IdeaCard
                 key={idea.id}
-                deleteIdea={(idea) => this.deleteIdea(idea)}
                 { ...idea }
+                deleteIdea={(idea) => this.deleteIdea(idea)}
                 updateIdea={(idea) => this.updateIdeas(idea)}/>
             );
           })}

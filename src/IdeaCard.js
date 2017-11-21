@@ -8,32 +8,32 @@ export default class IdeaCard extends Component {
       title: '',
       body: '',
       quality: null,
+      id: null,
     };
   }
 
   componentDidMount() {
     const { title, body, quality, id } = this.props;
-    this.setState ({
-      id,
+    this.setState({
       title,
       body,
-      quality
+      quality,
+      id
     });
   }
 
-  upvote() {
-    const currentQuality = this.state.quality;
-    if (this.state.quality < 3) {
-      this.setState({ quality: currentQuality + 1 });
-    }
-    this.updateIdea();
-  }
+  updateQuality(type) {
+    this.setState(prevState => {
+      if (type === 'upvote' && prevState.quality < 3) {
+        return {quality: prevState.quality + 1}
+      }
+      if (type === 'downvote' && prevState.quality > 1) {
+        return {quality: prevState.quality - 1}
+      }
+      return null;
+    });
 
-  downvote(ideaId) {
-    const currentQuality = this.state.quality;
-    if (this.state.quality > 1) {
-      this.setState({ quality: currentQuality - 1 });
-    }
+    this.updateIdea();
   }
 
   deleteIdea(id) {
@@ -46,30 +46,31 @@ export default class IdeaCard extends Component {
   }
 
   updateIdea() {
-    const { title, body, quality } = this.state;
+    const { id, title, body, quality } = this.state;
+
     const idea = {
-      id: this.props.id,
       title,
       body,
       quality,
+      id,
     }
     this.props.updateIdea(idea);
   }
 
   render() {
-    const { id, title, body, quality } = this.state;
+    const { id, title, body, quality, editing } = this.state;
     const ideaQuality =
-      this.state.quality === 1
+      quality === 1
         ? 'swill'
         : quality === 2 ? 'plausible' : 'genius';
 
     return (
       <div key={id}>
-        {this.state.editing ? (
+        {editing ? (
           <input
             type="text"
             name="title"
-            value={this.state.title}
+            value={title}
             onChange={e => {
               this.updateInfo(e);
             }}
@@ -81,10 +82,10 @@ export default class IdeaCard extends Component {
         <h2>{body}</h2>
         <p>quality: {ideaQuality}</p>
         <button onClick={() => this.deleteIdea(id)}>Delete</button>
-        <button disabled={quality === 3} onClick={() => this.upvote(id)}>
+        <button disabled={quality === 3} onClick={() => this.updateQuality('upvote')}>
           +
         </button>
-        <button disabled={quality === 1} onClick={() => this.downvote(id)}>
+        <button disabled={quality === 1} onClick={() => this.updateQuality('downvote')}>
           -
         </button>
       </div>
