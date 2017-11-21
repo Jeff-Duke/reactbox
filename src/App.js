@@ -8,17 +8,19 @@ class App extends Component {
     super();
     this.state = {
       ideas: [],
+      searchTerm: '',
     };
   }
 
   componentDidMount() {
     const ideas = JSON.parse(localStorage.getItem('ideas')) || [];
-    this.setState ({ ideas });
+    this.setState({ ideas });
   }
 
   addNewIdea(newIdea) {
     const updatedIdeas = this.state.ideas;
     updatedIdeas.unshift(newIdea);
+
     this.setState({ ideas: updatedIdeas });
     this.storeIdeas(updatedIdeas);
   }
@@ -35,13 +37,14 @@ class App extends Component {
 
   updateIdeas(ideaToUpdate) {
     let ideas = this.state.ideas;
-    let newIdeasArray = ideas.map((idea) => {
+    let newIdeasArray = ideas.map(idea => {
       if (idea.id === ideaToUpdate.id) {
         return ideaToUpdate;
       } else {
         return idea;
       }
     });
+
     this.setState({ ideas: newIdeasArray });
     this.storeIdeas(newIdeasArray);
   }
@@ -51,21 +54,32 @@ class App extends Component {
   }
 
   render() {
-    const { ideas } = this.state;
+    const { ideas, searchTerm } = this.state;
+    let visibleIdeas = ideas.filter(idea => {
+      return (
+        idea.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        idea.body.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
 
     return (
       <div className="App">
-        <IdeaInputs
-          addNewIdea={(idea) => this.addNewIdea(idea)}
-        />
+        <IdeaInputs addNewIdea={idea => this.addNewIdea(idea)} />
         <section>
-          {ideas.map(idea => {
+          <input
+            value={searchTerm}
+            onChange={e => this.setState({ searchTerm: e.target.value })}
+            name="searchTerm"
+            type="text"
+          />
+          {visibleIdeas.map(idea => {
             return (
               <IdeaCard
                 key={idea.id}
-                { ...idea }
-                deleteIdea={(idea) => this.deleteIdea(idea)}
-                updateIdea={(idea) => this.updateIdeas(idea)}/>
+                {...idea}
+                deleteIdea={idea => this.deleteIdea(idea)}
+                updateIdea={idea => this.updateIdeas(idea)}
+              />
             );
           })}
         </section>
