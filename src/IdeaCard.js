@@ -36,7 +36,7 @@ export default class IdeaCard extends Component {
   }
 
   deleteIdea() {
-    this.props.deleteIdea(this.props.idea.id);
+    this.props.deleteIdea(this.props.idea);
   }
 
   updateInfo(e) {
@@ -61,6 +61,7 @@ export default class IdeaCard extends Component {
       this.state.quality === 1
         ? 'swill'
         : quality === 2 ? 'plausible' : 'genius';
+
     return (
       <div key={id}>
         {this.state.editing ? (

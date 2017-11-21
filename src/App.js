@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import IdeaInputs from './IdeaInputs';
 import IdeaCard from './IdeaCard';
 
 class App extends Component {
@@ -17,30 +18,19 @@ class App extends Component {
     this.setState ({ ideas });
   }
 
-  updateIdeaInfo(e) {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  }
-
-  addNewIdea() {
-    const { title, body, ideas } = this.state;
-    const idea = {
-      title,
-      body,
-      quality: 1,
-      id: Date.now(),
-    };
-
-    ideas.unshift(idea);
-    this.setState({ ideas });
+  addNewIdea(newIdea) {
+    const updatedIdeas = this.state.ideas;
+    updatedIdeas.unshift(newIdea);
+    this.setState({ ideas: updatedIdeas });
     this.storeIdeas();
   }
 
-  deleteIdea(ideaId) {
+  deleteIdea(ideaToDelete) {
     let { ideas } = this.state;
     ideas = ideas.filter(idea => {
-      return idea.id !== ideaId;
+      return idea !== ideaToDelete;
     });
+
     this.setState({ ideas });
     this.storeIdeas();
   }
@@ -65,29 +55,15 @@ class App extends Component {
 
     return (
       <div className="App">
-        <section>
-          <label htmlFor="title">Title</label>
-          <input
-            onChange={e => this.updateIdeaInfo(e)}
-            name="title"
-            id="title"
-            type="text"
-          />
-          <label htmlFor="body">Body</label>
-          <input
-            onChange={e => this.updateIdeaInfo(e)}
-            name="body"
-            id="body"
-            type="text"
-          />
-          <button onClick={() => this.addNewIdea()}>Add Idea</button>
-        </section>
+        <IdeaInputs
+          addNewIdea={(idea) => this.addNewIdea(idea)}
+        />
         <section>
           {ideas.map(idea => {
             return (
               <IdeaCard
                 key={idea.id}
-                deleteIdea={(ideaId) => this.deleteIdea(ideaId)}
+                deleteIdea={(idea) => this.deleteIdea(idea)}
                 idea={idea}
                 updateIdea={(idea) => this.updateIdeas(idea)}/>
             );
