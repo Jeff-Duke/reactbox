@@ -35,9 +35,9 @@ export default class IdeaHeader extends Component {
   render() {
     const { title, body } = this.state;
     return (
-      <section>
+      <section className="idea-header">
+        <h1>idea<span>Box</span></h1>
         <form onSubmit={e => this.createNewIdea(e)}>
-          <label htmlFor="title">Title</label>
           <input
             value={ title }
             onChange={e => this.updateIdeaInfo(e)}
@@ -45,16 +45,17 @@ export default class IdeaHeader extends Component {
             id="title"
             type="text"
             autoFocus={true}
+            placeholder="Title"
           />
-          <label htmlFor="body">Body</label>
-          <input
+          <textarea
             value={ body }
             onChange={e => this.updateIdeaInfo(e)}
             name="body"
             id="body"
             type="text"
+            placeholder="Body"
           />
-          <button type="submit">Add Idea</button>
+          <button type="submit" disabled={!this.state.title}>Add Idea</button>
         </form>
       </section>
     );

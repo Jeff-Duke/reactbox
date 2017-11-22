@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,YAAa;EACX,OAAO,EAAE,IAAI;EAEb,iBAAK;IACH,KAAK,EAAE,GAAG;IACV,MAAM,EAAE,MAAM;IACd,UAAU,EAAE,MAAM;IAElB,mDAAgB;MACd,OAAO,EAAE,KAAK;MACd,SAAS,EAAE,QAAQ;MACnB,MAAM,EAAE,SAAS;MACjB,OAAO,EAAE,KAAK;MACd,KAAK,EAAE,KAAK",
+"sources": ["../scss/IdeaHeader.scss"],
 "names": [],
 "file": "IdeaHeader.css"
 }
