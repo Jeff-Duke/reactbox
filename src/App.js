@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import IdeaInputs from './IdeaInputs';
+import './styles/css/index.css';
+import IdeaHeader from './IdeaHeader';
 import IdeaCard from './IdeaCard';
 
 class App extends Component {
@@ -83,7 +83,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <IdeaInputs addNewIdea={idea => this.addNewIdea(idea)} />
+        <IdeaHeader addNewIdea={idea => this.addNewIdea(idea)} />
         <section>
           <select
             name="sorting"
