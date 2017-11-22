@@ -5,21 +5,11 @@ export default class IdeaCard extends Component {
     super(props);
     this.state = {
       editing: null,
-      title: '',
-      body: '',
-      quality: null,
-      id: null,
+      title: props.title,
+      body: props.body,
+      quality: props.quality,
+      id: props.id,
     };
-  }
-
-  componentDidMount() {
-    const { title, body, quality, id } = this.props;
-    this.setState({
-      title,
-      body,
-      quality,
-      id,
-    });
   }
 
   updateQuality(type) {
@@ -77,6 +67,7 @@ export default class IdeaCard extends Component {
               this.updateIdea();
             }}
             type="text"
+            autoFocus={true}
           />
         ) : (
           <h1 onClick={() => this.setState({ editing: 'title' })}>{title}</h1>
@@ -91,6 +82,7 @@ export default class IdeaCard extends Component {
               this.updateIdea();
             }}
             type="text"
+            autoFocus={true}
           />
         ) : (
           <h2 onClick={() => this.setState({ editing: 'body' })}>{body}</h2>

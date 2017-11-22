@@ -9,7 +9,8 @@ export default class IdeaInputs extends Component {
     };
   }
 
-  createNewIdea() {
+  createNewIdea(e) {
+    e.preventDefault();
     const { title, body } = this.state;
     const idea = {
       title,
@@ -35,23 +36,26 @@ export default class IdeaInputs extends Component {
     const { title, body } = this.state;
     return (
       <section>
-        <label htmlFor="title">Title</label>
-        <input
-          value={ title }
-          onChange={e => this.updateIdeaInfo(e)}
-          name="title"
-          id="title"
-          type="text"
-        />
-        <label htmlFor="body">Body</label>
-        <input
-          value={ body }
-          onChange={e => this.updateIdeaInfo(e)}
-          name="body"
-          id="body"
-          type="text"
-        />
-        <button onClick={() => this.createNewIdea()}>Add Idea</button>
+        <form onSubmit={e => this.createNewIdea(e)}>
+          <label htmlFor="title">Title</label>
+          <input
+            value={ title }
+            onChange={e => this.updateIdeaInfo(e)}
+            name="title"
+            id="title"
+            type="text"
+            autoFocus={true}
+          />
+          <label htmlFor="body">Body</label>
+          <input
+            value={ body }
+            onChange={e => this.updateIdeaInfo(e)}
+            name="body"
+            id="body"
+            type="text"
+          />
+          <button type="submit">Add Idea</button>
+        </form>
       </section>
     );
   }
