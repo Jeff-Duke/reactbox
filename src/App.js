@@ -107,6 +107,7 @@ class App extends Component {
               name="searchTerm"
               type="text"
               placeholder="Search"
+              aria-label="Idea search form input"
             />
           </section>
 

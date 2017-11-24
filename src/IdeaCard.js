@@ -60,6 +60,7 @@ export default class IdeaCard extends Component {
         <button
           className="card-button delete"
           onClick={() => this.deleteIdea(id)}
+          aria-label="Delete idea button"
         />
 
         {editing && editing === 'title' ? (
@@ -103,11 +104,13 @@ export default class IdeaCard extends Component {
             disabled={quality === 3}
             onClick={() => this.updateQuality('upvote')}
             className="card-button upvote"
+            aria-label="Idea quality downvote button"
           />
           <button
             disabled={quality === 1}
             onClick={() => this.updateQuality('downvote')}
             className="card-button downvote"
+            aria-label="Idea quality downvote button"
           />
           <p>quality: {ideaQuality}</p>
         </div>

@@ -29,33 +29,43 @@ export default class IdeaHeader extends Component {
   }
 
   clearInputs() {
-    this.setState({ title: '', body: '' })
+    this.setState({ title: '', body: '' });
   }
 
   render() {
     const { title, body } = this.state;
     return (
       <section className="idea-header">
-        <h1>idea<span>Box</span></h1>
+        <h1>
+          idea<span>Box</span>
+        </h1>
         <form onSubmit={e => this.createNewIdea(e)}>
           <input
-            value={ title }
+            value={title}
             onChange={e => this.updateIdeaInfo(e)}
             name="title"
             id="title"
             type="text"
             autoFocus={true}
             placeholder="Title"
+            aria-label="New idea title form field"
           />
           <textarea
-            value={ body }
+            value={body}
             onChange={e => this.updateIdeaInfo(e)}
             name="body"
             id="body"
             type="text"
             placeholder="Body"
+            aria-label="New idea body form field"
           />
-          <button type="submit" disabled={!this.state.title}>Add Idea</button>
+          <button
+            type="submit"
+            disabled={!this.state.title}
+            aria-label="New idea submit button"
+          >
+            Add Idea
+          </button>
         </form>
       </section>
     );

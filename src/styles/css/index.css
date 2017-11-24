@@ -170,6 +170,7 @@ body {
       display: block; }
     .idea-list .sorting-search .sorting-element select {
       background: url("../assets/down-arrow.svg") no-repeat right;
+      background-color: #fff;
       background-origin: content-box;
       border: 2px solid #d1d3d4;
       border-radius: 0;
@@ -258,7 +259,7 @@ body {
   .idea-header h1 {
     color: #00a79d;
     font-family: "Roboto Slab", serif;
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center; }
     .idea-header h1 span {
       color: #939598; }
