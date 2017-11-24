@@ -18,40 +18,44 @@
   @media screen and (max-width: 480px) {
     .idea-list input[name='searchTerm'] {
       width: 15rem; } }
-.idea-list .sorting-element {
-  float: right;
-  margin-left: -11rem;
-  margin-top: -1rem;
-  margin-right: 1rem; }
-  .idea-list .sorting-element label {
-    display: block; }
-  .idea-list .sorting-element select {
-    background: url("../assets/down-arrow.svg") no-repeat right;
-    border: 2px solid #d1d3d4;
-    cursor: pointer;
-    font-size: 1.125rem;
-    height: 2.75rem;
-    width: 10rem;
-    padding: 0.5rem;
-    -webkit-appearance: none;
-    -moz-appearance: none; }
-    .idea-list .sorting-element select::-ms-expand {
-      display: none; }
-  .idea-list .sorting-element label {
-    font-family: "Open Sans", sans-serif;
-    color: #6d6e71;
-    font-size: 1rem;
-    margin-left: .25rem; }
-  @media screen and (max-width: 860px) {
-    .idea-list .sorting-element {
-      float: none;
-      width: 20rem;
-      margin: 1rem auto;
+.idea-list .sorting-search {
+  position: relative; }
+  .idea-list .sorting-search input {
+    margin-top: 2rem; }
+  .idea-list .sorting-search .sorting-element {
+    position: absolute;
+    right: 0;
+    margin-top: -1.5rem; }
+    .idea-list .sorting-search .sorting-element label {
       display: block; }
-      .idea-list .sorting-element select {
-        width: 100%; } }
-  @media screen and (max-width: 480px) {
-    .idea-list .sorting-element {
-      width: 15rem; } }
+    .idea-list .sorting-search .sorting-element select {
+      background: url("../assets/down-arrow.svg") no-repeat right;
+      border: 2px solid #d1d3d4;
+      border-radius: 0;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      font-size: 1.125rem;
+      height: 2.75rem;
+      padding: 0.5rem;
+      -webkit-appearance: none;
+      -moz-appearance: none; }
+      .idea-list .sorting-search .sorting-element select::-ms-expand {
+        display: none; }
+    .idea-list .sorting-search .sorting-element label {
+      font-family: "Open Sans", sans-serif;
+      color: #6d6e71;
+      font-size: 1rem;
+      margin-left: 0.25rem; }
+    @media screen and (max-width: 860px) {
+      .idea-list .sorting-search .sorting-element {
+        position: relative;
+        width: 20rem;
+        margin: 1rem auto 2rem;
+        display: block; }
+        .idea-list .sorting-search .sorting-element select {
+          width: 100%; } }
+    @media screen and (max-width: 480px) {
+      .idea-list .sorting-search .sorting-element {
+        width: 15rem; } }
 
 /*# sourceMappingURL=App.css.map */

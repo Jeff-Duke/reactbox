@@ -15,52 +15,60 @@
     margin-top: 2rem;
   }
 
-  .sorting-element {
-    float: right;
-    margin-left: -11rem;
-    margin-top: -1rem;
-    margin-right: 1rem;
+  .sorting-search {
+    position: relative;
 
-    label {
-      display: block;
+    input {
+      margin-top: 2rem;
     }
 
-    select {
-      background: url('../assets/down-arrow.svg') no-repeat right;
-      border: 2px solid $color-border-gray;
-      cursor: pointer;
-      font-size: 1.125rem;
-      height: 2.75rem;
-      width: 10rem;
-      padding: 0.5rem;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+    .sorting-element {
+      position: absolute;
+      right: 0;
+      margin-top: -1.5rem;
 
-      &::-ms-expand {
-        display: none;
+      label {
+        display: block;
       }
-    }
-
-    label {
-      font-family: $primary-font;
-      color: $color-text-dark-gray;
-      font-size: 1rem;
-      margin-left: .25rem;
-    }
-
-    @media screen and(max-width: 860px) {
-      float: none;
-      width: 20rem;
-      margin: 1rem auto;
-      display: block;
 
       select {
-        width: 100%;
-      }
-    }
+        background: url('../assets/down-arrow.svg') no-repeat right;
+        border: 2px solid $color-border-gray;
+        border-radius: 0;
+        cursor: pointer;
+        margin-top: 0.5rem;
+        font-size: 1.125rem;
+        height: 2.75rem;
+        padding: 0.5rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
 
-    @media screen and (max-width: 480px) {
-      width: 15rem;
+        &::-ms-expand {
+          display: none;
+        }
+      }
+
+      label {
+        font-family: $primary-font;
+        color: $color-text-dark-gray;
+        font-size: 1rem;
+        margin-left: 0.25rem;
+      }
+
+      @media screen and(max-width: 860px) {
+        position: relative;
+        width: 20rem;
+        margin: 1rem auto 2rem;
+        display: block;
+
+        select {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        width: 15rem;
+      }
     }
   }
 }

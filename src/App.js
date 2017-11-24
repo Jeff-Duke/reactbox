@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       ideas: [],
       searchTerm: '',
-      sorting: 'lowestQuality',
+      sorting: 'newest',
     };
   }
 
@@ -85,27 +85,30 @@ class App extends Component {
       <div className="App">
         <IdeaHeader addNewIdea={idea => this.addNewIdea(idea)} />
         <section className="container idea-list">
-        <div className="sorting-element">
-          <label htmlFor="sorting"> Sort Ideas By:</label>
-          <select
-            name="sorting"
-            id="sorting"
-            onChange={e => this.setState({ sorting: e.target.value })}
-          >
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-            <option value="highestQuality">Highest Quality</option>
-            <option value="lowestQuality">Lowest Quality</option>
-          </select>
-        </div>
+          <section className="sorting-search">
+            <div className="sorting-element">
+              <label htmlFor="sorting"> Sort Ideas By:</label>
+              <select
+                name="sorting"
+                id="sorting"
+                value={this.state.sorting}
+                onChange={e => this.setState({ sorting: e.target.value })}
+              >
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="highestQuality">Highest Quality</option>
+                <option value="lowestQuality">Lowest Quality</option>
+              </select>
+            </div>
 
-          <input
-            value={searchTerm}
-            onChange={e => this.setState({ searchTerm: e.target.value })}
-            name="searchTerm"
-            type="text"
-            placeholder="Search"
-          />
+            <input
+              value={searchTerm}
+              onChange={e => this.setState({ searchTerm: e.target.value })}
+              name="searchTerm"
+              type="text"
+              placeholder="Search"
+            />
+          </section>
 
           {visibleIdeas.map(idea => {
             return (
