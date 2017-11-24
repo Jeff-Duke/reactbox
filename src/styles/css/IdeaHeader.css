@@ -1,69 +1,53 @@
-/*
-Error: Undefined variable: "$color-background".
-        on line 3 of src/styles/scss/IdeaHeader.scss
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700");
+.idea-header {
+  padding: 2rem;
+  background: #eff3f2; }
+  .idea-header h1 {
+    color: #00a79d;
+    font-family: "Roboto Slab", serif;
+    font-size: 2rem;
+    text-align: center; }
+    .idea-header h1 span {
+      color: #939598; }
+  .idea-header form {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center; }
+    .idea-header form input, .idea-header form textarea {
+      display: block;
+      font-size: 1.125rem;
+      margin: 1rem auto;
+      padding: 0.5rem;
+      width: 20rem;
+      border: 2px solid #d1d3d4; }
+      .idea-header form input[placeholder], .idea-header form textarea[placeholder] {
+        font-family: "Open Sans", sans-serif; }
+      @media screen and (max-width: 480px) {
+        .idea-header form input, .idea-header form textarea {
+          width: 15rem; } }
+    .idea-header form button {
+      background: #00a79d;
+      border: none;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      height: 2rem;
+      width: 20rem; }
+      .idea-header form button:active, .idea-header form button:focus:active {
+        box-shadow: none; }
+      .idea-header form button:hover, .idea-header form button:focus, .idea-header form button:focus:hover {
+        background: #045e55; }
+      .idea-header form buttondisabled {
+        background: #939598;
+        color: #6d6e71;
+        pointer-events: none; }
+  @media screen and (max-width: 480px) {
+    .idea-header {
+      padding: 2rem 1rem; }
+      .idea-header form {
+        width: 100%; }
+      .idea-header button {
+        width: 15rem !important; } }
 
-1: .idea-header {
-2:   padding: 2rem;
-3:   background: $color-background;
-4: 
-5:   h1 {
-6:     color: $color-primary-blue;
-7:     font-family: $secondary-font;
-8:     font-size: 2rem;
-
-Backtrace:
-src/styles/scss/IdeaHeader.scss:3
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/script/tree/variable.rb:49:in `_perform'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/script/tree/node.rb:50:in `perform'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:79:in `block in with_base'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:135:in `with_frame'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:79:in `with_base'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:162:in `visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:444:in `map'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:79:in `block in with_base'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:135:in `with_frame'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:79:in `with_base'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:162:in `visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:52:in `map'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:161:in `visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:10:in `visit'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/engine.rb:307:in `render_with_sourcemap'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:209:in `each'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:320:in `block in watch'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
-/Users/Duke/.rvm/gems/ruby-2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$color-background\".\A         on line 3 of src/styles/scss/IdeaHeader.scss\A \A 1: .idea-header {\A 2:   padding: 2rem;\A 3:   background: $color-background;\A 4: \A 5:   h1 {\A 6:     color: $color-primary-blue;\A 7:     font-family: $secondary-font;\A 8:     font-size: 2rem;"; }
+/*# sourceMappingURL=IdeaHeader.css.map */

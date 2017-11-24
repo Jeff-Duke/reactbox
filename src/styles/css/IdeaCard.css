@@ -1,3 +1,50 @@
-
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700");
+.idea-card {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-bottom: 1px solid #d1d3d4;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: #6d6e71; }
+  .idea-card h1, .idea-card .idea-quality p {
+    font-family: "Roboto Slab", serif;
+    font-weight: 700;
+    color: #6d6e71; }
+  .idea-card h1, .idea-card h2 {
+    margin-bottom: 1rem; }
+  .idea-card h1 {
+    font-size: 1.5rem; }
+  .idea-card input {
+    display: block;
+    font-size: 1rem;
+    width: 15rem;
+    border: 2px solid #d1d3d4;
+    margin-bottom: 1rem; }
+  .idea-card .card-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    height: 1.5rem;
+    width: 1.5rem; }
+    .idea-card .card-button.delete {
+      float: right;
+      background: url("../assets/delete.svg") center no-repeat; }
+      .idea-card .card-button.delete:hover {
+        background: url("../assets/delete-hover.svg") center no-repeat; }
+    .idea-card .card-button.upvote {
+      float: left;
+      background: url("../assets/upvote.svg") center no-repeat; }
+      .idea-card .card-button.upvote:hover {
+        background: url("../assets/upvote-hover.svg") center no-repeat; }
+    .idea-card .card-button.downvote {
+      float: left;
+      background: url("../assets/downvote.svg") center no-repeat;
+      margin-right: 1rem; }
+      .idea-card .card-button.downvote:hover {
+        background: url("../assets/downvote-hover.svg") center no-repeat; }
+  .idea-card .idea-quality {
+    margin: 1rem 0; }
+    .idea-card .idea-quality p {
+      margin-left: 1rem; }
 
 /*# sourceMappingURL=IdeaCard.css.map */

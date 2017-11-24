@@ -84,7 +84,9 @@ class App extends Component {
     return (
       <div className="App">
         <IdeaHeader addNewIdea={idea => this.addNewIdea(idea)} />
-        <section>
+        <section className="container idea-list">
+        <div className="sorting-element">
+          <label htmlFor="sorting"> Sort Ideas By:</label>
           <select
             name="sorting"
             id="sorting"
@@ -95,13 +97,16 @@ class App extends Component {
             <option value="highestQuality">Highest Quality</option>
             <option value="lowestQuality">Lowest Quality</option>
           </select>
-          <label htmlFor="searchTerm">Search</label>
+        </div>
+
           <input
             value={searchTerm}
             onChange={e => this.setState({ searchTerm: e.target.value })}
             name="searchTerm"
             type="text"
+            placeholder="Search"
           />
+
           {visibleIdeas.map(idea => {
             return (
               <IdeaCard

@@ -1,1 +1,66 @@
+@import '_variables_mixins';
 
+.idea-list {
+  &.container {
+    width: 80%;
+    margin: 1rem auto;
+
+    @media screen and (max-width: 640px) {
+      width: 100%;
+    }
+  }
+
+  input[name='searchTerm'] {
+    @include inputMixin;
+    margin-top: 2rem;
+  }
+
+  .sorting-element {
+    float: right;
+    margin-left: -11rem;
+    margin-top: -1rem;
+    margin-right: 1rem;
+
+    label {
+      display: block;
+    }
+
+    select {
+      background: url('../assets/down-arrow.svg') no-repeat right;
+      border: 2px solid $color-border-gray;
+      cursor: pointer;
+      font-size: 1.125rem;
+      height: 2.75rem;
+      width: 10rem;
+      padding: 0.5rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      &::-ms-expand {
+        display: none;
+      }
+    }
+
+    label {
+      font-family: $primary-font;
+      color: $color-text-dark-gray;
+      font-size: 1rem;
+      margin-left: .25rem;
+    }
+
+    @media screen and(max-width: 860px) {
+      float: none;
+      width: 20rem;
+      margin: 1rem auto;
+      display: block;
+
+      select {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      width: 15rem;
+    }
+  }
+}

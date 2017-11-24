@@ -1,3 +1,5 @@
+@import '_variables_mixins';
+
 .idea-header {
   padding: 2rem;
   background: $color-background;
@@ -19,16 +21,7 @@
     text-align: center;
 
     input, textarea {
-      display: block;
-      font-size: 1.125rem;
-      margin: 1rem auto;
-      padding: .5rem;
-      width: 20rem;
-      border: 2px solid $color-border-gray;
-
-      &[placeholder] {
-        font-family: $primary-font;
-      }
+      @include inputMixin;
     }
 
     button {
@@ -46,11 +39,29 @@
         box-shadow: none;
       }
 
+      &:hover,
+      &:focus,
+      &:focus:hover {
+        background: $color-hover-green;
+      }
+
       &disabled {
         background: $color-body-gray;
         color: $color-text-dark-gray;
         pointer-events: none;
       }
+    }
+  }
+
+  @media screen and(max-width: 480px){
+    padding: 2rem 1rem;
+
+    form {
+      width: 100%;
+    }
+
+    button {
+      width: 15rem !important;
     }
   }
 }
