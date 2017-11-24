@@ -14,7 +14,7 @@
     color: $color-text-dark-gray;
   }
 
-  h1, h2 {
+  h1, .idea-body {
     margin-bottom: 1rem;
   }
 
@@ -22,6 +22,10 @@
     font-size: 1.5rem;
   }
 
+  .idea-body {
+    line-height: 1.5rem;
+    padding: .5rem 0;
+  }
 
   input {
     display: block;

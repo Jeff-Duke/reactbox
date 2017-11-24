@@ -91,9 +91,14 @@ export default class IdeaCard extends Component {
             autoFocus={true}
           />
         ) : (
-          <h2 onClick={() => this.setState({ editing: 'body' })}>{body}</h2>
+          <p
+            className="idea-body"
+            onClick={() => this.setState({ editing: 'body' })}
+          >
+            {body}
+          </p>
         )}
-        <div className='idea-quality'>
+        <div className="idea-quality">
           <button
             disabled={quality === 3}
             onClick={() => this.updateQuality('upvote')}
