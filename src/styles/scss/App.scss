@@ -24,7 +24,7 @@
 
     .sorting-element {
       position: absolute;
-      right: 0;
+      right: 1rem;
       margin-top: -1.5rem;
 
       label {
@@ -33,6 +33,7 @@
 
       select {
         background: url('../assets/down-arrow.svg') no-repeat right;
+        background-origin: content-box;
         border: 2px solid $color-border-gray;
         border-radius: 0;
         cursor: pointer;
@@ -56,7 +57,7 @@
       }
 
       @media screen and(max-width: 860px) {
-        position: relative;
+        position: initial;
         width: 20rem;
         margin: 1rem auto 2rem;
         display: block;

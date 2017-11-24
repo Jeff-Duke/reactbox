@@ -164,12 +164,13 @@ body {
     margin-top: 2rem; }
   .idea-list .sorting-search .sorting-element {
     position: absolute;
-    right: 0;
+    right: 1rem;
     margin-top: -1.5rem; }
     .idea-list .sorting-search .sorting-element label {
       display: block; }
     .idea-list .sorting-search .sorting-element select {
       background: url("../assets/down-arrow.svg") no-repeat right;
+      background-origin: content-box;
       border: 2px solid #d1d3d4;
       border-radius: 0;
       cursor: pointer;
@@ -188,7 +189,7 @@ body {
       margin-left: 0.25rem; }
     @media screen and (max-width: 860px) {
       .idea-list .sorting-search .sorting-element {
-        position: relative;
+        position: initial;
         width: 20rem;
         margin: 1rem auto 2rem;
         display: block; }
@@ -215,10 +216,10 @@ body {
     font-size: 1.5rem; }
   .idea-card input {
     display: block;
-    font-size: 1rem;
-    width: 15rem;
     border: 2px solid #d1d3d4;
-    margin-bottom: 1rem; }
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    width: 15rem; }
   .idea-card .card-button {
     border: none;
     background-color: transparent;
@@ -232,7 +233,8 @@ body {
         background: url("../assets/delete-hover.svg") center no-repeat; }
     .idea-card .card-button.upvote {
       float: left;
-      background: url("../assets/upvote.svg") center no-repeat; }
+      background: url("../assets/upvote.svg") center no-repeat;
+      margin-right: 0.5rem; }
       .idea-card .card-button.upvote:hover {
         background: url("../assets/upvote-hover.svg") center no-repeat; }
     .idea-card .card-button.downvote {
@@ -244,6 +246,7 @@ body {
   .idea-card .idea-quality {
     margin: 1rem 0; }
     .idea-card .idea-quality p {
+      font-size: 1.125rem;
       margin-left: 1rem; }
 
 .idea-header {

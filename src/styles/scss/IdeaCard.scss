@@ -22,12 +22,13 @@
     font-size: 1.5rem;
   }
 
+
   input {
     display: block;
-    font-size: 1rem;
-    width: 15rem;
     border: 2px solid $color-border-gray;
+    font-size: 1rem;
     margin-bottom: 1rem;
+    width: 15rem;
   }
 
   .card-button {
@@ -49,6 +50,7 @@
     &.upvote {
       float: left;
       background: url('../assets/upvote.svg') center no-repeat;
+      margin-right: 0.5rem;
 
       &:hover {
         background: url('../assets/upvote-hover.svg') center no-repeat;
@@ -68,7 +70,9 @@
 
   .idea-quality {
     margin: 1rem 0;
+
     p {
+      font-size: 1.125rem;
       margin-left: 1rem;
     }
   }

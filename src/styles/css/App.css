@@ -24,12 +24,13 @@
     margin-top: 2rem; }
   .idea-list .sorting-search .sorting-element {
     position: absolute;
-    right: 0;
+    right: 1rem;
     margin-top: -1.5rem; }
     .idea-list .sorting-search .sorting-element label {
       display: block; }
     .idea-list .sorting-search .sorting-element select {
       background: url("../assets/down-arrow.svg") no-repeat right;
+      background-origin: content-box;
       border: 2px solid #d1d3d4;
       border-radius: 0;
       cursor: pointer;
@@ -48,7 +49,7 @@
       margin-left: 0.25rem; }
     @media screen and (max-width: 860px) {
       .idea-list .sorting-search .sorting-element {
-        position: relative;
+        position: initial;
         width: 20rem;
         margin: 1rem auto 2rem;
         display: block; }
