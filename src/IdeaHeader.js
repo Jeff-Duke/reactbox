@@ -9,8 +9,8 @@ export default class IdeaHeader extends Component {
     };
   }
 
-  createNewIdea(e) {
-    e.preventDefault();
+  createNewIdea = event => {
+    event.preventDefault();
     const { title, body } = this.state;
     const idea = {
       title,
@@ -21,16 +21,16 @@ export default class IdeaHeader extends Component {
 
     this.props.addNewIdea(idea);
     this.clearInputs();
-  }
+  };
 
-  updateIdeaInfo(e) {
-    const { name, value } = e.target;
+  updateIdeaInfo = event => {
+    const { name, value } = event.target;
     this.setState({ [name]: value });
-  }
+  };
 
-  clearInputs() {
+  clearInputs = () => {
     this.setState({ title: '', body: '' });
-  }
+  };
 
   render() {
     const { title, body } = this.state;
@@ -39,10 +39,10 @@ export default class IdeaHeader extends Component {
         <h1>
           idea<span>Box</span>
         </h1>
-        <form onSubmit={e => this.createNewIdea(e)}>
+        <form onSubmit={this.createNewIdea}>
           <input
             value={title}
-            onChange={e => this.updateIdeaInfo(e)}
+            onChange={this.updateIdeaInfo}
             name="title"
             id="title"
             type="text"
@@ -52,7 +52,7 @@ export default class IdeaHeader extends Component {
           />
           <textarea
             value={body}
-            onChange={e => this.updateIdeaInfo(e)}
+            onChange={this.updateIdeaInfo}
             name="body"
             id="body"
             type="text"

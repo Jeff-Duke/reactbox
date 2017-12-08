@@ -26,29 +26,26 @@ class App extends Component {
     this.storeIdeas(updatedIdeas);
   }
 
-  deleteIdea(idToDelete) {
+  deleteIdea = idToDelete => {
     let { ideas } = this.state;
-    ideas = ideas.filter(idea => {
-      return idea.id !== idToDelete;
-    });
+    ideas = ideas.filter(idea => idea.id !== idToDelete);
 
     this.setState({ ideas });
     this.storeIdeas(ideas);
-  }
+  };
 
-  updateIdeas(ideaToUpdate) {
-    let ideas = this.state.ideas;
-    let newIdeasArray = ideas.map(idea => {
+  updateIdeas = ideaToUpdate => {
+    const ideas = this.state.ideas;
+    const newIdeasArray = ideas.map(idea => {
       if (idea.id === ideaToUpdate.id) {
         return ideaToUpdate;
-      } else {
-        return idea;
       }
+      return idea;
     });
 
     this.setState({ ideas: newIdeasArray });
     this.storeIdeas(newIdeasArray);
-  }
+  };
 
   storeIdeas(ideas) {
     localStorage.setItem('ideas', JSON.stringify(ideas));
@@ -74,12 +71,11 @@ class App extends Component {
       sortedIdeas = ideas.sort((a, b) => a.id > b.id);
     }
 
-    let visibleIdeas = sortedIdeas.filter(idea => {
-      return (
+    const visibleIdeas = sortedIdeas.filter(
+      idea =>
         idea.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         idea.body.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    });
+    );
 
     return (
       <div className="App">
@@ -111,16 +107,14 @@ class App extends Component {
             />
           </section>
 
-          {visibleIdeas.map(idea => {
-            return (
-              <IdeaCard
-                key={idea.id}
-                {...idea}
-                deleteIdea={idea => this.deleteIdea(idea)}
-                updateIdea={idea => this.updateIdeas(idea)}
-              />
-            );
-          })}
+          {visibleIdeas.map(idea => (
+            <IdeaCard
+              key={idea.id}
+              {...idea}
+              deleteIdea={this.deleteIdea}
+              updateIdea={this.updateIdeas}
+            />
+          ))}
         </section>
       </div>
     );
